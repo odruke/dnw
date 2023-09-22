@@ -3,8 +3,8 @@
 
 typedef	struct	Person
 {
-	char	*name[20];
-	char	*city[20];
+	char	name[20];
+	char	city[20];
 	int		age;
 }person;
 
@@ -28,7 +28,7 @@ int	main()
 	
 	while(i < 3)
 	{
-		printf("the name pf the person is %s, he lives in %s, and has %i years old\n", personarray[i].name, personarray[i].city, personarray[i].age)
+		printf("the name of the person %i is %s, he lives in %s, and has %i years old\n\n", i + 1, personarray[i].name, personarray[i].city, personarray[i].age);
 		i++;
 	}
 	return (0);
