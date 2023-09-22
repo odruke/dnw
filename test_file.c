@@ -2,5 +2,5 @@
 
 int main()
 {
-    printf("this is a test file for the tablet reposritory");
+    printf("this is a test file for the tablet repository");
 }
