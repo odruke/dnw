@@ -24,8 +24,8 @@ void	deleteNumber(Number *number)
 
 void 	addfront(Number **head, Number *new)
 {
-	new->next = head->next;
-	head->next = new;
+	new->next = *head;
+	*head = new;
 }
 
 int	sizeNumber(Number *head)
@@ -61,8 +61,8 @@ void	addlast(Number **head, Number *new)
 {
 	Number *temp;
 
-	temp = head->next;
-	while (temp)
+	temp = (*head)->next;
+	while (temp->next)
 	{
 		temp = temp->next;
 	}
@@ -75,22 +75,23 @@ int	main()
 
 //	nlist = 4;
 	Number	*node1;
-	Number	*node2;
+//	Number	*node2;
 	Number	*head = (Number *)malloc(sizeof(Number));
 	if (!head)
-		return (NULL);
+		return (1);
+	head->position = 0;
 	head->next = NULL;
 	
 	node1 = createnode(1);
-	node2 = createnode(2);
-	addfront(head, node1);
-	addlast(head, node2);
+//	node2 = createnode(2);
+	addfront(&head->next, node1);
+//	addlast(&head->next, node2);
 
 	printNumber(head);
 
-	deletenumber(head);
-	deletenumber(node2);
-	deletenumber(node1);
+	deleteNumber(head);
+//	deleteNumber(node2);
+	deleteNumber(node1);
 
 //	while(while nlist > 0)
 //	{
