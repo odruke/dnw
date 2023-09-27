@@ -39,7 +39,7 @@ int	main()
 	printf("***********  D  N  W  ***********\n\n");
 	printf("welcome to Definetely Not Wordle!\n\n\n");
 	printf("plz enter a five letter word to start the game:\n");
-	scanf("%s", &test); //anadir fail options
+	scanf("%s", test); //anadir fail options
 	while(test[i])
 	{
 		if(!compare_exact(&original[i], &test[i]))
