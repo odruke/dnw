@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 int	compare_exact(char *original, char *test)
 {
 	if(*original == *test)
@@ -8,21 +9,25 @@ int	compare_exact(char *original, char *test)
 	else
 		return (0);
 }
-/*
-char	compare_part(char *original, char *test)
+
+char	*compare_part(char *original, char *letter)
 {
 	int	i;
 	
-	while(test)
+	while(original[i])
 	{
-		
+		if(original[i] == *letter)
+			return *letter;
+		i++;
 	}
+	return(NULL);
 }
-*/
+
 
 int	main()
 {
-	int i;
+	int 	i;
+	char	letter;
 	char	*final = (char *)malloc(sizeof(char) * 6);
 	char	*original = (char *)malloc(sizeof(char) * 6);
 	char	*test = (char *)malloc(sizeof(char) * 6);
@@ -43,7 +48,13 @@ int	main()
 	while(test[i])
 	{
 		if(!compare_exact(&original[i], &test[i]))
+		{
 			final[i] = '_';
+			if((letter = compare_part(original, &test[i])))
+			{
+				printf("letter %c is somewere else\n", letter);
+			}
+		}
 		else
 			final[i] = original[i];
 			i++;
