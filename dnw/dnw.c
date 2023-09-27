@@ -28,19 +28,21 @@ char	*compare_part(char *original, char *letter)
 int	main()
 {
 	int 	i;
-	char	*letter;
+	int		n;
 	char	*final = (char *)malloc(sizeof(char) * 6);
 	char	*original = (char *)malloc(sizeof(char) * 6);
 	char	*test = (char *)malloc(sizeof(char) * 6);
+	char	*missplaced = (char *)malloc(sizeof(char) * 6);
 	
-	if(!final || !original || !test)
+	if(!final || !original || !test || !missplaced)
 	{
 		printf("memory allocation failed\n");
 		return(0);
 	}
 	
-	
+	memset(missplaced, '\0', 6)
 	i = 0;
+	n = 0;
 	strcpy(original, "house");
 	printf("***********  D  N  W  ***********\n\n");
 	printf("welcome to Definetely Not Wordle!\n\n\n");
@@ -51,19 +53,24 @@ int	main()
 		if(!compare_exact(&original[i], &test[i]))
 		{
 			final[i] = '_';
-			if((letter = compare_part(original, &test[i])))
-			{
-				printf("letter %c is somewere else\n", *letter);
-			}
+			if((missplaced[n] = compare_part(original, &test[i])))
+				n++;
 		}
 		else
 			final[i] = original[i];
 			i++;
 	}
 	final[6] = '\0';
-	printf("%s\n", final);
+	n = 0;
+	printf("%s\n\n", final);
+	while(missplaced[n])
+	{
+		printf("letter %c is somewere else\n", missplaced[n]);
+		n++;
+	}
 	free(final);
 	free(original);
 	free(test);
+	free(missplaced);
 	return(0);
 }
