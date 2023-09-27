@@ -14,10 +14,11 @@ char	*compare_part(char *original, char *letter)
 {
 	int	i;
 	
+	i = 0;
 	while(original[i])
 	{
 		if(original[i] == *letter)
-			return *letter;
+			return letter;
 		i++;
 	}
 	return(NULL);
@@ -27,7 +28,7 @@ char	*compare_part(char *original, char *letter)
 int	main()
 {
 	int 	i;
-	char	letter;
+	char	*letter;
 	char	*final = (char *)malloc(sizeof(char) * 6);
 	char	*original = (char *)malloc(sizeof(char) * 6);
 	char	*test = (char *)malloc(sizeof(char) * 6);
@@ -52,7 +53,7 @@ int	main()
 			final[i] = '_';
 			if((letter = compare_part(original, &test[i])))
 			{
-				printf("letter %c is somewere else\n", letter);
+				printf("letter %c is somewere else\n", *letter);
 			}
 		}
 		else
