@@ -28,13 +28,13 @@ void 	addfront(Number **head, Number *new)
 	*head = new;
 }
 
-int	sizeNumber(Number *head)
+int	sizelist(Number *head)
 {
 	Number *temp;
 	int	i;
 
 	i = 0;
-	temp = head->next;
+	temp = head;
 	while (temp)
 	{
 		temp = temp->next;
@@ -43,18 +43,25 @@ int	sizeNumber(Number *head)
 	return (i);
 }
 
-void	printNumber(Number *head)
+void	printlist(Number *head)
 {
 	Number	*temp;
 	int	i;
 
 	i = 1;
-	temp = head->next;
-	while(temp)
+	temp = head;
+	if(!temp) // condition for empty list
 	{
-		printf("this is the position content in the node number %i: %i\n\n", i, temp->position);
-		temp = temp->next;
-		i++;
+		printf("this is the position content in the node number %i: %i\n\n", i, temp->position);	
+	}
+	else
+	{
+		while(temp)
+		{
+			printf("this is the position content in the node number %i: %i\n\n", i, temp->position);
+			temp = temp->next;
+			i++;
+		}
 	}
 }
 void	addlast(Number **head, Number *new)
@@ -75,7 +82,7 @@ int	main()
 
 //	nlist = 4;
 	Number	*node1;
-//	Number	*node2;
+	Number	*node2;
 	Number	*head = (Number *)malloc(sizeof(Number));
 	if (!head)
 		return (1);
@@ -83,15 +90,15 @@ int	main()
 	head->next = NULL;
 	
 	node1 = createnode(1);
-//	node2 = createnode(2);
+	node2 = createnode(2);
 	addfront(&head->next, node1);
-//	addlast(&head->next, node2);
+	addlast(&head, node2);
 
-	printNumber(head);
-
+	printlist(head);
+	printf("->the list is up to %i nodes by now<-\n", sizelist(head));
 	deleteNumber(head);
-//	deleteNumber(node2);
 	deleteNumber(node1);
+	deleteNumber(node2);
 
 //	while(while nlist > 0)
 //	{
