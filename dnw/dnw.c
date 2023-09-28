@@ -10,7 +10,7 @@ int	compare_exact(char *original, char *test)
 		return (0);
 }
 
-char	*compare_part(char *original, char *letter)
+char	compare_part(char *original, char *letter)
 {
 	int	i;
 	
@@ -18,10 +18,10 @@ char	*compare_part(char *original, char *letter)
 	while(original[i])
 	{
 		if(original[i] == *letter)
-			return letter;
+			return (*letter); 
 		i++;
 	}
-	return(NULL);
+	return(0);
 }
 
 
@@ -40,7 +40,7 @@ int	main()
 		return(0);
 	}
 	
-	memset(missplaced, '\0', 6)
+	memset(missplaced, '\0', 6);
 	i = 0;
 	n = 0;
 	strcpy(original, "house");
