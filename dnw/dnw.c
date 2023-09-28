@@ -23,8 +23,20 @@ char	compare_part(char *original, char *letter)
 	}
 	return(0);
 }
+/*
+int	check_done_letter(char	*str, char letter)
+{
+	int	i;
+	int	len;
 
-
+	i = 0;
+	len = strlen(str);
+	while(len > 0)
+	{
+		if (str[len])
+	}
+}
+*/
 int	main()
 {
 	int 	i;
@@ -50,11 +62,14 @@ int	main()
 	scanf("%s", test); //anadir fail options
 	while(test[i])
 	{
-		if(!compare_exact(&original[i], &test[i]))
+		if(!compare_exact(&original[i], &test[i])) 
 		{
 			final[i] = '_';
-			if((missplaced[n] = compare_part(original, &test[i])))
-				n++;
+			if(!strchr(missplaced, test[i]))
+			{
+				if((missplaced[n] = compare_part(original, &test[i])))
+					n++;
+			}
 		}
 		else
 			final[i] = original[i];
