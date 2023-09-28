@@ -40,7 +40,8 @@ int	check_done_letter(char	*str, char letter)
 int	main()
 {
 	int 	i;
-	int		n;
+	int	n;
+	int	tries;
 	char	*final = (char *)malloc(sizeof(char) * 6);
 	char	*original = (char *)malloc(sizeof(char) * 6);
 	char	*test = (char *)malloc(sizeof(char) * 6);
@@ -55,34 +56,46 @@ int	main()
 	memset(missplaced, '\0', 6);
 	i = 0;
 	n = 0;
+	tries = 5;
 	strcpy(original, "house");
 	printf("***********  D  N  W  ***********\n\n");
 	printf("welcome to Definetely Not Wordle!\n\n\n");
 	printf("plz enter a five letter word to start the game:\n");
-	scanf("%s", test); //anadir fail options
-	while(test[i])
+	while(strcmp(original, test) != 0 && tries > 0)
 	{
-		if(!compare_exact(&original[i], &test[i])) 
+		if(tries < 5)
+			printf("you have %i tries left. Plz try againi\n", tries);
+		scanf("%s", test); //anadir fail options
+		tries--;
+		i = 0;
+		while(test[i])
 		{
-			final[i] = '_';
-			if(!strchr(missplaced, test[i]))
+			if(!compare_exact(&original[i], &test[i])) 
 			{
-				if((missplaced[n] = compare_part(original, &test[i])))
-					n++;
+				final[i] = '_';
+				if(!strchr(missplaced, test[i]))
+				{
+					if((missplaced[n] = compare_part(original, &test[i])))
+						n++;
+				}
 			}
+			else
+				final[i] = original[i];
+				i++;
 		}
-		else
-			final[i] = original[i];
-			i++;
+		final[6] = '\0';
+		n = 0;
+		printf("%s\n\n", final);
+		while(missplaced[n])
+		{
+			printf("letter %c is somewere else\n", missplaced[n]);
+			n++;
+		}
 	}
-	final[6] = '\0';
-	n = 0;
-	printf("%s\n\n", final);
-	while(missplaced[n])
-	{
-		printf("letter %c is somewere else\n", missplaced[n]);
-		n++;
-	}
+	if(strcmp(test, original) == 0)
+		printf("Congratulations, you guessed the word!\n\n");
+	else
+		printf("Sorry, good luck next time\n\n");
 	free(final);
 	free(original);
 	free(test);
