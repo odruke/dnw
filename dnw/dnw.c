@@ -24,6 +24,29 @@ char	compare_part(char *original, char *letter)
 	return(0);
 }
 
+char	*scanword(void)
+{
+	char	*c;
+	int	clean;
+	
+	c = (char *)malloc(sizeof(char) * 6);
+	if(!c)
+	{
+		printf("memory allocation failed in scanword");
+		return (NULL);
+	}
+	scanf("%5s", c);
+	if(clean = getchar() != '\n' && clean != EOF)
+	{
+		while (clean = getchar() != '\n' && clean != EOF);
+		printf("Invalid input. Please enter a five letter word using only lowercase letters.\n");
+		free (c);
+		return scanword();
+	}
+	else
+		return (c);
+}
+
 int	main()
 {
 	int 	i;
@@ -31,10 +54,11 @@ int	main()
 	int	tries;
 	char	*final = (char *)malloc(sizeof(char) * 6);
 	char	*original = (char *)malloc(sizeof(char) * 6);
-	char	*test = (char *)malloc(sizeof(char) * 6);
+//	char	*test = (char *)malloc(sizeof(char) * 6);
+	char	*test;
 	char	*missplaced = (char *)malloc(sizeof(char) * 6);
 	
-	if(!final || !original || !test || !missplaced)
+	if(!final || !original || !missplaced)
 	{
 		printf("memory allocation failed\n");
 		return(0);
@@ -52,16 +76,17 @@ int	main()
 	{
 		if(tries < 5)
 			printf("you have %i tries left. Plz try again\n", tries);
-		int	scan;
+//		int	scan;
 	//	if(
-		scan = scanf("%5s", test);
+	//		scan = scanf("%5s", test);
+			test = scanword();
 		       //	!= 5)
 		//	{
 		//		printf("Invalid input. Please enter a five letter word using only lowercase letters.\n");
 		//		while (getchar() != '\n');
 		//		continue;
 		//	}
-		printf("scanf value is %i\n", scan);
+//		printf("scanf value is %i\n", scan);
 		tries--;
 		i = 0;
 		while(test[i])
