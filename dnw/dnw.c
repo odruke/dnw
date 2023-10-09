@@ -23,20 +23,7 @@ char	compare_part(char *original, char *letter)
 	}
 	return(0);
 }
-/*
-int	check_done_letter(char	*str, char letter)
-{
-	int	i;
-	int	len;
 
-	i = 0;
-	len = strlen(str);
-	while(len > 0)
-	{
-		if (str[len])
-	}
-}
-*/
 int	main()
 {
 	int 	i;
@@ -64,8 +51,17 @@ int	main()
 	while(strcmp(original, test) != 0 && tries > 0)
 	{
 		if(tries < 5)
-			printf("you have %i tries left. Plz try againi\n", tries);
-		scanf("%s", test); //anadir fail options
+			printf("you have %i tries left. Plz try again\n", tries);
+		int	scan;
+	//	if(
+		scan = scanf("%5s", test);
+		       //	!= 5)
+		//	{
+		//		printf("Invalid input. Please enter a five letter word using only lowercase letters.\n");
+		//		while (getchar() != '\n');
+		//		continue;
+		//	}
+		printf("scanf value is %i\n", scan);
 		tries--;
 		i = 0;
 		while(test[i])
@@ -73,7 +69,7 @@ int	main()
 			if(!compare_exact(&original[i], &test[i])) 
 			{
 				final[i] = '_';
-				if(!strchr(missplaced, test[i]))
+				if(!strchr(missplaced, test[i]) && !strchr(final, test[i]))
 				{
 					if((missplaced[n] = compare_part(original, &test[i])))
 						n++;
