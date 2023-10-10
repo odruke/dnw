@@ -54,11 +54,10 @@ int	main()
 	int	tries;
 	char	*final = (char *)malloc(sizeof(char) * 6);
 	char	*original = (char *)malloc(sizeof(char) * 6);
-//	char	*test = (char *)malloc(sizeof(char) * 6);
-	char	*test;
+	char	*test = (char *)malloc(sizeof(char) * 6);
 	char	*missplaced = (char *)malloc(sizeof(char) * 6);
 	
-	if(!final || !original || !missplaced)
+	if(!final || !original || !test || !missplaced)
 	{
 		printf("memory allocation failed\n");
 		return(0);
@@ -69,6 +68,7 @@ int	main()
 	n = 0;
 	tries = 5;
 	strcpy(original, "house");
+	strcpy(test, "_____");
 	printf("***********  D  N  W  ***********\n\n");
 	printf("welcome to Definetely Not Wordle!\n\n\n");
 	printf("plz enter a five letter word to start the game:\n");
