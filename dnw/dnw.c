@@ -26,25 +26,15 @@ char	compare_part(char *original, char *letter)
 
 void	scanword(char *test)
 {
-//	char	*c;
 	int	clean;
 	
-/*	c = (char *)malloc(sizeof(char) * 6);
-	if(!c)
-	{
-		printf("memory allocation failed in scanword");
-		return (NULL);
-	}
-*/	scanf("%5s", test);
+	scanf("%5s", test);
 	if(clean = getchar() != '\n' && clean != EOF)
 	{
 		while (clean = getchar() != '\n' && clean != EOF);
 		printf("Invalid input. Please enter a five letter word using only lowercase letters.\n");
-//		free (c);
 		scanword(test);
 	}
-//	else
-//		return (c);
 }
 
 int	main()
@@ -76,18 +66,7 @@ int	main()
 	{
 		if(tries < 5)
 			printf("you have %i tries left. Plz try again\n", tries);
-//		int	scan;
-	//	if(
-	//		scan = scanf("%5s", test);
-//			test = scanword();
 		scanword(test);
-		       //	!= 5)
-		//	{
-		//		printf("Invalid input. Please enter a five letter word using only lowercase letters.\n");
-		//		while (getchar() != '\n');
-		//		continue;
-		//	}
-//		printf("scanf value is %i\n", scan);
 		tries--;
 		i = 0;
 		while(test[i])
@@ -108,10 +87,14 @@ int	main()
 		final[6] = '\0';
 		n = 0;
 		printf("%s\n\n", final);
-		while(missplaced[n])
+		if (strcmp(original, test) != 0)
 		{
-			printf("letter %c is somewere else\n", missplaced[n]);
-			n++;
+			while(missplaced[n])
+			{
+				printf("letter %c is somewere else\n", missplaced[n]);
+				missplaced[n] = '\0';
+				n++;
+			}
 		}
 	}
 	if(strcmp(test, original) == 0)
