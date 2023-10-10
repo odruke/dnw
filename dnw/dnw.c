@@ -24,27 +24,27 @@ char	compare_part(char *original, char *letter)
 	return(0);
 }
 
-char	*scanword(void)
+void	scanword(char *test)
 {
-	char	*c;
+//	char	*c;
 	int	clean;
 	
-	c = (char *)malloc(sizeof(char) * 6);
+/*	c = (char *)malloc(sizeof(char) * 6);
 	if(!c)
 	{
 		printf("memory allocation failed in scanword");
 		return (NULL);
 	}
-	scanf("%5s", c);
+*/	scanf("%5s", test);
 	if(clean = getchar() != '\n' && clean != EOF)
 	{
 		while (clean = getchar() != '\n' && clean != EOF);
 		printf("Invalid input. Please enter a five letter word using only lowercase letters.\n");
-		free (c);
-		return scanword();
+//		free (c);
+		scanword(test);
 	}
-	else
-		return (c);
+//	else
+//		return (c);
 }
 
 int	main()
@@ -79,7 +79,8 @@ int	main()
 //		int	scan;
 	//	if(
 	//		scan = scanf("%5s", test);
-			test = scanword();
+//			test = scanword();
+		scanword(test);
 		       //	!= 5)
 		//	{
 		//		printf("Invalid input. Please enter a five letter word using only lowercase letters.\n");
