@@ -28,11 +28,16 @@ void	scanword(char *test)
 {
 	int	clean;
 	
-	scanf("%5s", test);
+	if(scanf("%5[a-z]", test) != 1)
+	{
+		while (clean = getchar() != '\n' && clean != EOF);
+		printf("invalid input. Lowercase letters only\n");
+		scanword(test);
+	}
 	if(clean = getchar() != '\n' && clean != EOF)
 	{
 		while (clean = getchar() != '\n' && clean != EOF);
-		printf("Invalid input. Please enter a five letter word using only lowercase letters.\n");
+		printf("Invalid input. Please enter a five letter word.\n");
 		scanword(test);
 	}
 }
@@ -57,7 +62,7 @@ int	main()
 	i = 0;
 	n = 0;
 	tries = 5;
-	strcpy(original, "house");
+	strcpy(original, "tetas");
 	strcpy(test, "_____");
 	printf("***********  D  N  W  ***********\n\n");
 	printf("welcome to Definetely Not Wordle!\n\n\n");
