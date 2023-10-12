@@ -26,10 +26,13 @@ int	ft_setword(char *origin, int language)
 	{
 		case 1:
 			lang_file = en;
+			break;
 		case 2:
 			lang_file = sp;
+			break;
 		case 3:
 			lang_file = fr;
+			break;
 	}
 
 	FILE	*file = fopen(lang_file, "r");
@@ -111,7 +114,8 @@ int	main()
 	n = 0;
 	tries = 5;
 	printf("plz select language:\n\npress 1 for english\npresione 2 para español\napuyez sur 3 pour le français\n");
-	scanf("%i", language);
+	scanf("%i", &language);
+	getchar();
 	ft_setword(original, language);
 	strcpy(test, "_____");
 	printf("***********  D  N  W  ***********\n\n");
