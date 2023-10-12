@@ -8,20 +8,38 @@ static int getRandomInt(int min, int max) {
     return rand() % (max - min + 1) + min;
 }
 
-int	ft_setword(char *origin)
+int	ft_setword(char *origin, int language)
 {
 	
 	srand(time(NULL));
 	char	i;
 	int	position;
-	FILE	*file = fopen("english_words.txt", "r");
+	char	*en;
+	char	*sp;
+	char	*fr;
+	char	*lang_file;
+
+	en = "english_words.txt";
+	sp = "spanish_words.txt";
+	fr = "french_words.txt";
+	switch(language)
+	{
+		case 1:
+			lang_file = en;
+		case 2:
+			lang_file = sp;
+		case 3:
+			lang_file = fr;
+	}
+
+	FILE	*file = fopen(lang_file, "r");
 	if (file == NULL) 
 	{
 		perror("Error opening file");
 		return 1;
 	}
 	i = 0;
-	position = (sizeof(char) * (getRandomInt(0, 4) * 6));
+	position = (sizeof(char) * (getRandomInt(0, 4) * 6)); //2nd value of getRandomInt match number of words in the txt
 	fseek(file, position, SEEK_SET);
 
     while((origin[i] = fgetc(file)) && (i < 5))
@@ -76,6 +94,7 @@ int	main()
 	int 	i;
 	int	n;
 	int	tries;
+	int	language;
 	char	*final = (char *)malloc(sizeof(char) * 6);
 	char	*original = (char *)malloc(sizeof(char) * 6);
 	char	*test = (char *)malloc(sizeof(char) * 6);
@@ -91,8 +110,9 @@ int	main()
 	i = 0;
 	n = 0;
 	tries = 5;
-	//strcpy(original, "tetas");
-	ft_setword(original);
+	printf("plz select language:\n\npress 1 for english\npresione 2 para español\napuyez sur 3 pour le français\n");
+	scanf("%i", language);
+	ft_setword(original, language);
 	strcpy(test, "_____");
 	printf("***********  D  N  W  ***********\n\n");
 	printf("welcome to Definetely Not Wordle!\n\n\n");
