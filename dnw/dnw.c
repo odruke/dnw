@@ -1,6 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
+#include <time.h>
+
+static int getRandomInt(int min, int max) {
+    return rand() % (max - min + 1) + min;
+}
+
+int	ft_setword(char *origin)
+{
+	
+	srand(time(NULL));
+	char	i;
+	int	position;
+	FILE	*file = fopen("english_words.txt", "r");
+	if (file == NULL) 
+	{
+		perror("Error opening file");
+		return 1;
+	}
+	i = 0;
+	position = (sizeof(char) * (getRandomInt(0, 4) * 6));
+	fseek(file, position, SEEK_SET);
+
+    while((origin[i] = fgetc(file)) && (i < 5))
+		i++;
+	origin[i] = '\0';
+	fclose(file);
+	return 0;
+}
 
 int	compare_exact(char *original, char *test)
 {
@@ -62,7 +91,8 @@ int	main()
 	i = 0;
 	n = 0;
 	tries = 5;
-	strcpy(original, "tetas");
+	//strcpy(original, "tetas");
+	ft_setword(original);
 	strcpy(test, "_____");
 	printf("***********  D  N  W  ***********\n\n");
 	printf("welcome to Definetely Not Wordle!\n\n\n");
