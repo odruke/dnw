@@ -42,7 +42,7 @@ int	ft_setword(char *origin, int language)
 		return 1;
 	}
 	i = 0;
-	position = (sizeof(char) * (getRandomInt(0, 4) * 6)); //2nd value of getRandomInt match number of words in the txt
+	position = (sizeof(char) * (getRandomInt(0, 49) * 6)); //2nd value of getRandomInt match number of words in the txt minus one
 	fseek(file, position, SEEK_SET);
 
     while((origin[i] = fgetc(file)) && (i < 5))
