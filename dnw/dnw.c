@@ -1,27 +1,31 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdlib.h>
-#include <time.h>
+#include "lang.h"
 
-static int getRandomInt(int min, int max) {
+static int getRandomInt(int min, int max)
+{
     return rand() % (max - min + 1) + min;
 }
 
 int	ft_setword(char *origin, int language)
 {
-	
+/*
+ * search different approach for correct language input validation	
+	if(language != 1 && language != 2 && language != 3)
+	{
+		printf("invalid input\npress 1 for english\npresione 2 para español\napuyez sur 3 pour le français\n");
+		return (ft_setword);
+	}
+*/	
 	srand(time(NULL));
-	char	i;
+	int	i;
 	int	position;
 	char	*en;
 	char	*sp;
 	char	*fr;
 	char	*lang_file;
 
-	en = "english_words.txt";
-	sp = "spanish_words.txt";
-	fr = "french_words.txt";
+	en = "words/english_words.txt";
+	sp = "words/spanish_words.txt";
+	fr = "words/french_words.txt";
 	switch(language)
 	{
 		case 1:
@@ -77,6 +81,7 @@ char	compare_part(char *original, char *letter)
 void	scanword(char *test)
 {
 	int	clean;
+	char	*msg;
 	
 	if(scanf("%5[a-z]", test) != 1)
 	{
@@ -98,11 +103,12 @@ int	main()
 	int	n;
 	int	tries;
 	int	language;
+	char	*msg;	
 	char	*final = (char *)malloc(sizeof(char) * 6);
 	char	*original = (char *)malloc(sizeof(char) * 6);
 	char	*test = (char *)malloc(sizeof(char) * 6);
 	char	*missplaced = (char *)malloc(sizeof(char) * 6);
-	
+
 	if(!final || !original || !test || !missplaced)
 	{
 		printf("memory allocation failed\n");
@@ -118,13 +124,18 @@ int	main()
 	getchar();
 	ft_setword(original, language);
 	strcpy(test, "_____");
-	printf("***********  D  N  W  ***********\n\n");
-	printf("welcome to Definetely Not Wordle!\n\n\n");
-	printf("plz enter a five letter word to start the game:\n");
+	system("clear");
+	msg = ft_message("welcome", language);
+	printf("%s", msg);
+	free(msg);
 	while(strcmp(original, test) != 0 && tries > 0)
 	{
 		if(tries < 5)
-			printf("you have %i tries left. Plz try again\n", tries);
+		{
+			msg = ft_message("tries", language);
+			printf(msg, tries);
+			free(msg);
+		}
 		scanword(test);
 		tries--;
 		i = 0;
@@ -150,16 +161,26 @@ int	main()
 		{
 			while(missplaced[n])
 			{
-				printf("letter %c is somewere else\n", missplaced[n]);
+				msg = ft_message("missplaced", language);
+				printf(msg, missplaced[n]);
+				free(msg);
 				missplaced[n] = '\0';
 				n++;
 			}
 		}
 	}
 	if(strcmp(test, original) == 0)
-		printf("Congratulations, you guessed the word!\n\n");
+	{
+		msg = ft_message("win", language);
+		printf("%s", msg);
+		free(msg);
+	}
 	else
-		printf("Sorry, good luck next time\n\n");
+	{
+		msg = ft_message("lose", language);
+		printf(msg, original);
+		free(msg);
+	}
 	free(final);
 	free(original);
 	free(test);

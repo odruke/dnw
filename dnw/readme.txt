@@ -5,3 +5,6 @@ Known bugs:
 
 2 repeated guessed letters
 	When the word to guess has a repeated letter, if you missplace one of both, the help message will ignore it and won't display it.
+
+3 missplaced letters unknown behaviour
+	When there are repeated missplaced letters, the message bevahiour is unclear, it can skip the message, or make multiples at a time after where it should be.
