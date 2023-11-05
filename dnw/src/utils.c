@@ -80,18 +80,19 @@ char    compare_part(char *original, char *letter)
 void    scanword(char *test)
 {
 	int	clean;
-	char	*msg;
 	
 	if(scanf("%5[a-z]", test) != 1)
 	{
-		while (clean = getchar() != '\n' && clean != EOF);
+		while ((clean = getchar()) != '\n' && clean != EOF);
 		printf("invalid input. Lowercase letters only\n");
 		scanword(test);
 	}
-	if(clean = getchar() != '\n' && clean != EOF)
+	
+	if((clean = getchar()) != '\n' && clean != EOF)
 	{
-		while (clean = getchar() != '\n' && clean != EOF);
+		while ((clean = getchar()) != '\n' && clean != EOF);
 		printf("Invalid input. Please enter a five letter word.\n");
 		scanword(test);
 	}
+	
 }

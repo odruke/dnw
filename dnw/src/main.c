@@ -54,10 +54,8 @@ int	main()
 				}
 			}
 			else
-			{
 				final[i] = original[i];
-				i++;
-			}
+			i++;
 		}
 		final[6] = '\0';
 		n = 0;
