@@ -35,28 +35,17 @@ This program must be executed in a terminal and uses Make for compilation. Make 
 1. After downloading the project files, navigate to the parent directory of the project.
 2. To create the executable file, run the following command:
 make play
-
-php
-Copy code
 This prepares the program for use.
 3. To recompile the program, use the following command:
 make re
-
-csharp
-Copy code
 4. To remove the executable and object files, execute:
 make fclean
 
-bash
-Copy code
 
 ## Usage
 
 In Linux and macOS environments, run the following command to execute the program:
 ./play
-
-vbnet
-Copy code
 Follow the instructions provided by the program to play the game. You can replay the game by entering `./play` again. The program does not retain information between executions.
 
 ## Contributing
