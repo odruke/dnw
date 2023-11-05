@@ -1,59 +1,80 @@
-DEFINETELY NOT WORDLE
-A litte word guessing terminal game i'd made to practice logic and some other programing concepts in c, inspired in the popular 'Wordle' game.
+# DEFINITELY NOT WORDLE
 
-Table of Contents
+**DEFINITELY NOT WORDLE** is a simple word-guessing terminal game inspired by the popular 'Wordle' game. It was created to practice logic and programming concepts in C.
 
-Getting Started
+## Table of Contents
 
-Prerequisites
-Installation
-Usage
-Contributing
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Usage](#usage)
+- [Contributing](#contributing)
+- [Known Bugs](#known-bugs)
 
+## Getting Started
 
+This program randomly selects a word from a database and challenges the user to guess it in five attempts. The program provides feedback to the user, indicating whether the entered word is correct and if any of the guessed letters match the target word. It also indicates if the guessed letters are in the correct position or misplaced. Instructions are provided in English, Spanish, and French.
 
-Getting Started
-This little program is a game that takes a random word from a database, and it prompts for the user to guess it, in 5 oportunities. The program will tell the user if the word he entered was either correct, or has any letter matching the guessed word. It will tell also if they are in place or missplaced. The instructions will be prompted in english, spanish and french, which are also the languages i speak.
-Writen in C, This project was made to practice logic for the main part of the project, and i added a multiligual feature to practice file reading and working with structures.
-While there can be other more functional approaches, again, the objetive was to practice those specific targets. I tried also to work in good practices, an organized code and files, and the usage of Make. 
+Written in C, this project was created to practice core programming logic and implement multilingual features to practice file reading and working with structures. While there may be more functional approaches to solving this problem, the primary objective was to practice specific programming skills and target objectives. The code and files adhere to good practices, and the project uses Make for build automation.
 
-Prerequisites
-The game is designed to work in Unix-like systems (Mac/Linux). Since this is a very simple project, the only requeriments are terminal enviroment in linux/mac wich supports C language (like in the majority of the instalations) with the basics libraries installed. The libraries needed are the following:
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdlib.h>
-#include <time.h>
-Everything else needed to the program to work is already contained in. 
+### Prerequisites
 
-Installation
-This program must be executed in a terminal. It uses Make to compile. Make is a build automation tool that streamlines the process of compiling and linking source code files to create executable programs or libraries. It uses a Makefile to determine which files need to be recompiled, reducing unnecessary work.
-1. Once downloaded the files, go to the parent directory of the project.
-2. Type 'Make play' to create the executable file. At this point you are ready to go.
-3. If you want to recompile the program, type 'make re'. If you want to just erase the executable and object files, type 'make fclean'.
+The game is designed to work on Unix-like systems (Mac/Linux). The only requirements are a terminal environment that supports C language (as in most installations) and the basic libraries. The necessary libraries are as follows:
 
+- `<stdio.h>`
+- `<stdlib.h>`
+- `<string.h>`
+- `<time.h>`
 
-Usage
-In linux/mac enviroments, you will type './play' to execute the file, then follow the instructions prompted by the program to play it. To replay it you can just retype './play'. The program does not keep any information between executions
+Everything needed for the program to work is already included in the project.
 
-Contributing
+### Installation
+
+This program must be executed in a terminal and uses Make for compilation. Make is a build automation tool that streamlines the compilation and linking of source code files to create executable programs or libraries. It uses a Makefile to determine which files need to be recompiled, reducing unnecessary work.
+
+1. After downloading the project files, navigate to the parent directory of the project.
+2. To create the executable file, run the following command:
+make play
+
+php
+Copy code
+This prepares the program for use.
+3. To recompile the program, use the following command:
+make re
+
+csharp
+Copy code
+4. To remove the executable and object files, execute:
+make fclean
+
+bash
+Copy code
+
+## Usage
+
+In Linux and macOS environments, run the following command to execute the program:
+./play
+
+vbnet
+Copy code
+Follow the instructions provided by the program to play the game. You can replay the game by entering `./play` again. The program does not retain information between executions.
+
+## Contributing
+
 If you'd like to contribute, please follow these steps:
 
-Fork the repository
-Create a new branch (git checkout -b feature/your-feature)
-Make your changes and commit them (git commit -m 'Description of your changes')
-Push to the branch (git push origin feature/your-feature)
-Open a pull request
+1. Fork the repository.
+2. Create a new branch (e.g., `feature/your-feature`).
+3. Make your changes and commit them using a clear description (e.g., `git commit -m 'Description of your changes'`).
+4. Push your changes to the branch with `git push origin feature/your-feature`.
+5. Open a pull request.
 
-Known bugs:
+## Known Bugs
 
-1 scanf bug
-	When prompting a not lowercase letter at first position, there is something remaining in the buffer that leads you to press enter twice to actually get the word to be checked. A whole refactor for a totally custom scanf function may will be required.
+1. **`scanf` Bug:** If a non-lowercase letter is entered as the first character, there is a buffer issue that requires pressing Enter twice to check the word. A potential solution would be to refactor the `scanf` function.
 
-2 repeated guessed letters
-	When the word to guess has a repeated letter, if you missplace one of both, the help message will ignore it and won't display it.
+2. **Repeated Guessed Letters:** When the word to guess contains repeated letters, mismatches with one of the repeated letters can cause the help message to be ignored and not displayed.
 
-3 missplaced letters unknown behaviour
-	When there are repeated missplaced letters, the message bevahiour is unclear, it can skip the message, or make multiples at a time after where it should be.
+3. **Misplaced Letters Behavior:** When there are repeated misplaced letters, the behavior of the program is unclear. It may skip the message or produce multiple messages beyond where they should appear.
 
-Feel free to report any new bug.
+Feel free to report any new bugs or contribute to improving the program.
