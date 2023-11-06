@@ -26,7 +26,7 @@ The game is designed to work on Unix-like systems (Mac/Linux). The only requirem
 - `<string.h>`
 - `<time.h>`
 
-Everything needed for the program to work is already included in the project.
+Everything else needed for the program to work is already included in the project.
 
 ### Installation
 
@@ -34,19 +34,26 @@ This program must be executed in a terminal and uses Make for compilation. Make 
 
 1. After downloading the project files, navigate to the parent directory of the project.
 2. To create the executable file, run the following command:
-make play
-This prepares the program for use.
-3. To recompile the program, use the following command:
-make re
-4. To remove the executable and object files, execute:
-make fclean
+
+`make play`
+(This prepares the program for use)
+
+4. To recompile the program, use the following command:
+
+`make re`
+
+6. To remove the executable and object files, execute:
+
+`make fclean`
 
 
 ## Usage
 
-In Linux and macOS environments, run the following command to execute the program:
-./play
-Follow the instructions provided by the program to play the game. You can replay the game by entering `./play` again. The program does not retain information between executions.
+In Linux and macOS environments, open a terminal and run the following command to execute the program:
+
+`./play`
+
+Follow the instructions provided by the program to play the game. Once you have finished the game (either guessing the word or exhausting all attempts), the program will terminate itself. You can replay the game by entering `./play` again. The program does not retain information between executions.
 
 ## Contributing
 
