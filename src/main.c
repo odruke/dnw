@@ -10,15 +10,15 @@ int	main()
 	char	*final = (char *)malloc(sizeof(char) * 6);
 	char	*original = (char *)malloc(sizeof(char) * 6);
 	char	*test = (char *)malloc(sizeof(char) * 6);
-	char	*missplaced = (char *)malloc(sizeof(char) * 6);
+	char	*misplaced = (char *)malloc(sizeof(char) * 6);
 
-	if(!final || !original || !test || !missplaced)
+	if(!final || !original || !test || !misplaced)
 	{
 		printf("memory allocation failed\n");
 		return(0);
 	}
 	
-	memset(missplaced, '\0', 6);
+	memset(misplaced, '\0', 6);
 	i = 0;
 	n = 0;
 	tries = 5;
@@ -47,9 +47,9 @@ int	main()
 			if(!compare_exact(&original[i], &test[i])) 
 			{
 				final[i] = '_';
-				if(!strchr(missplaced, test[i]) && !strchr(final, test[i]))
+				if(!strchr(misplaced, test[i]) && !strchr(final, test[i]))
 				{
-					if((missplaced[n] = compare_part(original, &test[i])))
+					if((misplaced[n] = compare_part(original, &test[i])))
 						n++;
 				}
 			}
@@ -62,12 +62,12 @@ int	main()
 		printf("%s\n\n", final);
 		if (strcmp(original, test) != 0)
 		{
-			while(missplaced[n])
+			while(misplaced[n])
 			{
-				msg = ft_message("missplaced", language);
-				printf(msg, missplaced[n]);
+				msg = ft_message("misplaced", language);
+				printf(msg, misplaced[n]);
 				free(msg);
-				missplaced[n] = '\0';
+				misplaced[n] = '\0';
 				n++;
 			}
 		}
@@ -87,6 +87,6 @@ int	main()
 	free(final);
 	free(original);
 	free(test);
-	free(missplaced);
+	free(misplaced);
 	return(0);
 }
