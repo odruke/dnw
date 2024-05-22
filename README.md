@@ -1,4 +1,4 @@
-# DEFINITELY NOT WORDLE
+# DEFINETELY NOT WORDLE
 
 **DEFINITELY NOT WORDLE** is a simple word-guessing terminal game inspired by the popular 'Wordle' game. It was created to practice logic and programming concepts in C.
 
